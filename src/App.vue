@@ -7,15 +7,6 @@
         </v-list-item-content>
       </v-list-item>
 
-      <v-img
-        alt="Vuetify Name"
-        class="shrink mt-1 hidden-sm-and-down"
-        contain
-        min-width="100"
-        src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-        width="100"
-      />
-
       <v-list dense nav>
         <v-list-item v-for="item in items" :key="item.title" :to="item.to" link>
           <v-list-item-icon>
@@ -42,9 +33,7 @@
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
 
-      <v-btn :loading="loading" class="ma-0 secondary--text" plain>
-        SIGN IN
-      </v-btn>
+      <v-btn class="ma-0 secondary--text" plain> SIGN IN </v-btn>
     </v-app-bar>
 
     <v-main>
