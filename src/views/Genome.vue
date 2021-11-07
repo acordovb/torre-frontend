@@ -1,5 +1,12 @@
 <template>
   <v-main>
+    <v-text-field
+      v-model="search"
+      append-icon="mdi-magnify"
+      v-on:keyup.enter="submit"
+      label="Username"
+      single-line
+    ></v-text-field>
     <v-row justify="space-around" class="spacing-playground">
       <v-avatar size="9em">
         <v-img
@@ -96,6 +103,25 @@ export default {
       .catch((err) => {
         console.log(err.response);
       });
+  },
+  methods: {
+    submit(e) {
+      axios
+        .get(
+          "https://torre-back-alealcor.herokuapp.com/torre/bios/" +
+            e.target.value
+        )
+        .then(
+          (res) => (
+            (this.info = res.data),
+            (this.items = res.data.strengths),
+            (e.target.value = "")
+          )
+        )
+        .catch((err) => {
+          console.log(err.response);
+        });
+    },
   },
 };
 </script>
