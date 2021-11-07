@@ -89,7 +89,7 @@ export default {
   }),
   created() {
     axios
-      .get("http://localhost:3000/torre/bios/torrenegra")
+      .get("https://torre-back-alealcor.herokuapp.com/torre/bios/torrenegra")
       .then(
         (res) => ((this.info = res.data), (this.items = res.data.strengths))
       )
