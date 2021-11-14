@@ -1,5 +1,11 @@
 <template>
   <v-main class="pa-7">
+    <loading
+      :active.sync="isLoading"
+      :can-cancel="true"
+      :on-cancel="onCancel"
+      :is-full-page="fullPage"
+    ></loading>
     <v-row justify="space-around" class="spacing-playground">
       <v-avatar size="9em">
         <v-img
@@ -68,11 +74,15 @@
 
 <script>
 import axios from "axios";
+import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/vue-loading.css";
 
 export default {
   name: "Genome",
   props: ["userId"],
   data: () => ({
+    isLoading: true,
+    fullPage: true,
     search: null,
     info: null,
     selectedItem: 1,
@@ -91,8 +101,12 @@ export default {
     );
     this.getGenomeDetails();
   },
+  components: {
+    Loading,
+  },
   methods: {
     getGenomeDetails() {
+      this.isLoading = true;
       axios
         .get(
           process.env.VUE_APP_API +
@@ -101,6 +115,7 @@ export default {
         )
         .then(
           (res) => (
+            (this.isLoading = false),
             (this.info = res.data),
             (this.items = res.data.strengths),
             this.renderData()
@@ -109,6 +124,9 @@ export default {
         .catch((err) => {
           console.log(err.response);
         });
+    },
+    onCancel() {
+      console.log("User cancelled the loader.");
     },
     renderData() {
       this.mastersObjs = [];
