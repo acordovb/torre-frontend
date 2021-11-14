@@ -29,19 +29,7 @@
 
       <v-spacer />
 
-      <v-text-field
-        v-model="search"
-        placeholder="Username"
-        prepend-inner-icon="mdi-magnify"
-        class="expanding-search mt-6"
-        :class="{ closed: searchClosed && !search }"
-        filled
-        dense
-        clearable
-        @focus="searchClosed = false"
-        @blur="searchClosed = true"
-        @keyup.enter="submit"
-      />
+      <searchBar />
 
       <v-btn class="ma-0 secondary--text" plain> SIGN IN </v-btn>
     </v-app-bar>
@@ -55,12 +43,14 @@
 </template>
 
 <script>
+import searchBar from "@/components/Search-Bar";
+
 export default {
   name: "App",
+  components: {
+    searchBar,
+  },
   data: () => ({
-    userId: null,
-    search: null,
-    searchClosed: true,
     drawer: null,
     items: [
       { title: "Your Genome", icon: "mdi-account", to: "/" },
@@ -68,24 +58,5 @@ export default {
       { title: "People", icon: "mdi-human-greeting-variant", to: "/people" },
     ],
   }),
-  methods: {
-    submit(e) {
-      this.userId = e.target.value;
-      this.$router.push("/genome/" + this.userId);
-    },
-  },
 };
 </script>
-
-<style lang="sass">
-.v-input.expanding-search
-  transition: max-width 0.5s
-  .v-input__slot
-    cursor: pointer !important
-    &:before, &:after
-      border-color: transparent !important
-  &.closed
-    max-width: 45px
-    .v-input__slot
-      background: transparent !important
-</style>
