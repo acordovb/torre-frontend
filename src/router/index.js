@@ -11,15 +11,18 @@ const routes = [
     component: Genome
   },
   {
-    path: '/Jobs',
-    name: 'Jobs',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Jobs.vue')
+    path: '/genome/:userId',
+    name: 'GenomeProfile',
+    component: () => import ('../views/Genome.vue'),
+    props: true
   },
   {
-    path: '/People',
+    path: '/jobs',
+    name: 'Jobs',
+    component: () => import('../views/Jobs.vue')
+  },
+  {
+    path: '/people',
     name: 'People',
     component: () => import('../views/People.vue')
   }
