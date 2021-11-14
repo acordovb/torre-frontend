@@ -1,6 +1,9 @@
 <template>
   <div>
-    <v-row justify="space-around" class="spacing-playground">
+    <v-row
+      justify="space-around"
+      class="spacing-playground"
+    >
       <v-avatar size="9em">
         <v-img
           id="image"
@@ -12,7 +15,12 @@
     </v-row>
     <v-container class="pa-6 d-flex justify-center">
       {{ name }}
-      <v-icon v-if="verified" dense>mdi-check-decagram</v-icon>
+      <v-icon
+        v-if="verified"
+        dense
+      >
+        mdi-check-decagram
+      </v-icon>
     </v-container>
   </div>
 </template>

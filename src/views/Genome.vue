@@ -13,15 +13,31 @@
     />
     <span>Skills and Interest</span>
 
-    <Skills icon="mdi-bike-fast" :array-skills="mastersObjs">
+    <Skills
+      icon="mdi-bike-fast"
+      :array-skills="mastersObjs"
+    >
       Master/Influencer
     </Skills>
 
-    <Skills icon="mdi-run-fast" :array-skills="expertObjs"> Expert </Skills>
+    <Skills
+      icon="mdi-run-fast"
+      :array-skills="expertObjs"
+    >
+      Expert
+    </Skills>
 
-    <Skills icon="mdi-run" :array-skills="proficientObjs"> Proeficient </Skills>
+    <Skills
+      icon="mdi-run"
+      :array-skills="proficientObjs"
+    >
+      Proeficient
+    </Skills>
 
-    <Skills icon="mdi-puzzle-plus" :array-skills="noExperienceObjs">
+    <Skills
+      icon="mdi-puzzle-plus"
+      :array-skills="noExperienceObjs"
+    >
       No experience, but interested
     </Skills>
   </v-main>
