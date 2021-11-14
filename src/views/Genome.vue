@@ -5,16 +5,18 @@
       :can-cancel="true"
       :on-cancel="onCancel"
       :is-full-page="fullPage"
-    ></loading>
-    <v-row justify="space-around" class="spacing-playground">
+    />
+    <v-row
+      justify="space-around"
+      class="spacing-playground"
+    >
       <v-avatar size="9em">
         <v-img
           id="image"
           :src="info.person.pictureThumbnail"
           aspect-ratio="1"
           class="grey lighten-2"
-        >
-        </v-img>
+        />
       </v-avatar>
     </v-row>
     <v-container class="pa-6 d-flex justify-center">
@@ -22,49 +24,85 @@
     </v-container>
     <span>Skills and Interest</span>
 
-    <div class="pa-1" v-if="mastersObjs.length != 0">
+    <div
+      v-if="mastersObjs.length != 0"
+      class="pa-1"
+    >
       <v-container>
         <v-icon>mdi-bike-fast</v-icon>
         Master/Influencer
       </v-container>
-      <v-chip-group active-class="primary--text" column>
-        <v-chip v-for="(item, i) in mastersObjs" :key="i">
+      <v-chip-group
+        active-class="primary--text"
+        column
+      >
+        <v-chip
+          v-for="(item, i) in mastersObjs"
+          :key="i"
+        >
           {{ item.name }}
         </v-chip>
       </v-chip-group>
     </div>
 
-    <div class="pa-1" v-if="expertObjs.length != 0">
+    <div
+      v-if="expertObjs.length != 0"
+      class="pa-1"
+    >
       <v-container>
         <v-icon>mdi-run-fast</v-icon>
         Expert
       </v-container>
-      <v-chip-group active-class="primary--text" column>
-        <v-chip v-for="(item, i) in expertObjs" :key="i">
+      <v-chip-group
+        active-class="primary--text"
+        column
+      >
+        <v-chip
+          v-for="(item, i) in expertObjs"
+          :key="i"
+        >
           {{ item.name }}
         </v-chip>
       </v-chip-group>
     </div>
 
-    <div class="pa-1" v-if="proficientObjs.length != 0">
+    <div
+      v-if="proficientObjs.length != 0"
+      class="pa-1"
+    >
       <v-container>
         <v-icon>mdi-run</v-icon>
         Proeficient
       </v-container>
-      <v-chip-group active-class="primary--text" column>
-        <v-chip v-for="(item, i) in proficientObjs" :key="i">
+      <v-chip-group
+        active-class="primary--text"
+        column
+      >
+        <v-chip
+          v-for="(item, i) in proficientObjs"
+          :key="i"
+        >
           {{ item.name }}
         </v-chip>
       </v-chip-group>
     </div>
 
-    <div class="pa-1" v-if="noExperienceObjs.length != 0">
+    <div
+      v-if="noExperienceObjs.length != 0"
+      class="pa-1"
+    >
       <v-container>
         <v-icon>mdi-puzzle-plus</v-icon>
         No experience, but interested
       </v-container>
-      <v-chip-group active-class="primary--text" column>
-        <v-chip v-for="(item, i) in noExperienceObjs" :key="i">
+      <v-chip-group
+        active-class="primary--text"
+        column
+      >
+        <v-chip
+          v-for="(item, i) in noExperienceObjs"
+          :key="i"
+        >
           {{ item.name }}
         </v-chip>
       </v-chip-group>
@@ -79,6 +117,9 @@ import "vue-loading-overlay/dist/vue-loading.css";
 
 export default {
   name: "Genome",
+  components: {
+    Loading,
+  },
   props: ["userId"],
   data: () => ({
     isLoading: true,
@@ -100,9 +141,6 @@ export default {
       }
     );
     this.getGenomeDetails();
-  },
-  components: {
-    Loading,
   },
   methods: {
     getGenomeDetails() {
