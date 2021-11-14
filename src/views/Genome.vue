@@ -1,117 +1,36 @@
 <template>
-  <v-main class="pa-7">
+  <v-main class="pa-4">
     <loading
       :active.sync="isLoading"
       :can-cancel="true"
       :on-cancel="onCancel"
       :is-full-page="fullPage"
     />
-    <v-row
-      justify="space-around"
-      class="spacing-playground"
-    >
-      <v-avatar size="9em">
-        <v-img
-          id="image"
-          :src="info.person.pictureThumbnail"
-          aspect-ratio="1"
-          class="grey lighten-2"
-        />
-      </v-avatar>
-    </v-row>
-    <v-container class="pa-6 d-flex justify-center">
-      {{ info.person.name }}
-    </v-container>
+    <Profile
+      :src-picture="info.person.pictureThumbnail"
+      :name="info.person.name"
+      :verified="info.person.verified"
+    />
     <span>Skills and Interest</span>
 
-    <div
-      v-if="mastersObjs.length != 0"
-      class="pa-1"
-    >
-      <v-container>
-        <v-icon>mdi-bike-fast</v-icon>
-        Master/Influencer
-      </v-container>
-      <v-chip-group
-        active-class="primary--text"
-        column
-      >
-        <v-chip
-          v-for="(item, i) in mastersObjs"
-          :key="i"
-        >
-          {{ item.name }}
-        </v-chip>
-      </v-chip-group>
-    </div>
+    <Skills icon="mdi-bike-fast" :array-skills="mastersObjs">
+      Master/Influencer
+    </Skills>
 
-    <div
-      v-if="expertObjs.length != 0"
-      class="pa-1"
-    >
-      <v-container>
-        <v-icon>mdi-run-fast</v-icon>
-        Expert
-      </v-container>
-      <v-chip-group
-        active-class="primary--text"
-        column
-      >
-        <v-chip
-          v-for="(item, i) in expertObjs"
-          :key="i"
-        >
-          {{ item.name }}
-        </v-chip>
-      </v-chip-group>
-    </div>
+    <Skills icon="mdi-run-fast" :array-skills="expertObjs"> Expert </Skills>
 
-    <div
-      v-if="proficientObjs.length != 0"
-      class="pa-1"
-    >
-      <v-container>
-        <v-icon>mdi-run</v-icon>
-        Proeficient
-      </v-container>
-      <v-chip-group
-        active-class="primary--text"
-        column
-      >
-        <v-chip
-          v-for="(item, i) in proficientObjs"
-          :key="i"
-        >
-          {{ item.name }}
-        </v-chip>
-      </v-chip-group>
-    </div>
+    <Skills icon="mdi-run" :array-skills="proficientObjs"> Proeficient </Skills>
 
-    <div
-      v-if="noExperienceObjs.length != 0"
-      class="pa-1"
-    >
-      <v-container>
-        <v-icon>mdi-puzzle-plus</v-icon>
-        No experience, but interested
-      </v-container>
-      <v-chip-group
-        active-class="primary--text"
-        column
-      >
-        <v-chip
-          v-for="(item, i) in noExperienceObjs"
-          :key="i"
-        >
-          {{ item.name }}
-        </v-chip>
-      </v-chip-group>
-    </div>
+    <Skills icon="mdi-puzzle-plus" :array-skills="noExperienceObjs">
+      No experience, but interested
+    </Skills>
   </v-main>
 </template>
 
 <script>
 import axios from "axios";
+import Skills from "@/components/Skills";
+import Profile from "@/components/Profile";
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/vue-loading.css";
 
@@ -119,14 +38,14 @@ export default {
   name: "Genome",
   components: {
     Loading,
+    Skills,
+    Profile,
   },
   props: ["userId"],
   data: () => ({
     isLoading: true,
     fullPage: true,
-    search: null,
     info: null,
-    selectedItem: 1,
     items: null,
     mastersObjs: null,
     expertObjs: null,
