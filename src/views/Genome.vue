@@ -11,7 +11,11 @@
       :name="info.person.name"
       :verified="info.person.verified"
     />
-    <span>Skills and Interest</span>
+    <div class="pb-5">
+      <socialBtns :socials="info.person.links" />
+    </div>
+
+    <span>Skills and interests</span>
 
     <Skills
       icon="mdi-bike-fast"
@@ -35,11 +39,43 @@
     </Skills>
 
     <Skills
+      icon="mdi-walk"
+      :array-skills="proficientObjs"
+    >
+      Novice
+    </Skills>
+
+    <Skills
       icon="mdi-puzzle-plus"
       :array-skills="noExperienceObjs"
     >
       No experience, but interested
     </Skills>
+
+    <div v-if="info.opportunities[3].data.length > 0">
+      <hr class="mt-4">
+
+      <Skills :array-skills="info.opportunities[3].data">
+        Industries and sectors of interest:
+      </Skills>
+    </div>
+
+    <hr class="mt-4">
+
+    <div class="pa-1">
+      <v-container> Languages: </v-container>
+      <v-chip-group
+        active-class="primary--text"
+        column
+      >
+        <v-chip
+          v-for="(item, i) in info.languages"
+          :key="i"
+        >
+          {{ item.language }} - {{ item.fluency }}
+        </v-chip>
+      </v-chip-group>
+    </div>
   </v-main>
 </template>
 
@@ -47,6 +83,7 @@
 import axios from "axios";
 import Skills from "@/components/Skills";
 import Profile from "@/components/Profile";
+import socialBtns from "@/components/Social-Buttons";
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/vue-loading.css";
 
@@ -56,6 +93,7 @@ export default {
     Loading,
     Skills,
     Profile,
+    socialBtns,
   },
   props: ["userId"],
   data: () => ({
@@ -66,6 +104,7 @@ export default {
     mastersObjs: null,
     expertObjs: null,
     proficientObjs: null,
+    noviceObjs: null,
     noExperienceObjs: null,
   }),
   created() {
@@ -105,6 +144,7 @@ export default {
       this.mastersObjs = [];
       this.expertObjs = [];
       this.proficientObjs = [];
+      this.noviceObjs = [];
       this.noExperienceObjs = [];
       this.items.forEach((objStrengths) => {
         if (objStrengths.proficiency == "master") {
@@ -115,6 +155,8 @@ export default {
           this.proficientObjs.push(objStrengths);
         } else if (objStrengths.proficiency == "no-experience-interested") {
           this.noExperienceObjs.push(objStrengths);
+        } else if (objStrengths.proficiency == "novice") {
+          this.noviceObjs.push(objStrengths);
         }
       });
     },
