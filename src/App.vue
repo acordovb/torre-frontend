@@ -72,7 +72,6 @@ export default {
     submit(e) {
       this.userId = e.target.value;
       this.$router.push("/genome/" + this.userId);
-      this.$forceUpdate();
     },
   },
 };
