@@ -25,7 +25,7 @@
     <div class="pa-1" v-if="mastersObjs.length != 0">
       <v-container>
         <v-icon>mdi-bike-fast</v-icon>
-        Master/influencer
+        Master/Influencer
       </v-container>
       <v-chip-group active-class="primary--text" column>
         <v-chip v-for="(item, i) in mastersObjs" :key="i">
