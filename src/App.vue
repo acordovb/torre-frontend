@@ -1,28 +1,14 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer
-      v-model="drawer"
-      class="primary"
-      app
-    >
+    <v-navigation-drawer v-model="drawer" class="primary" app>
       <v-list-item>
         <v-list-item-content>
-          <v-list-item-title class="text-h6">
-            Torre
-          </v-list-item-title>
+          <v-list-item-title class="text-h6"> Torre </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
 
-      <v-list
-        dense
-        nav
-      >
-        <v-list-item
-          v-for="item in items"
-          :key="item.title"
-          :to="item.to"
-          link
-        >
+      <v-list dense nav>
+        <v-list-item v-for="item in items" :key="item.title" :to="item.to" link>
           <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-icon>
@@ -57,12 +43,7 @@
         @keyup.enter="submit"
       />
 
-      <v-btn
-        class="ma-0 secondary--text"
-        plain
-      >
-        SIGN IN
-      </v-btn>
+      <v-btn class="ma-0 secondary--text" plain> SIGN IN </v-btn>
     </v-app-bar>
 
     <v-main>
