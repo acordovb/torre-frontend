@@ -17,6 +17,7 @@
       {{ name }}
       <v-icon
         v-if="verified"
+        class="pl-2"
         dense
       >
         mdi-check-decagram
