@@ -8,7 +8,7 @@
         class="mr-1"
         target="_blank"
       >
-        <v-icon> mdi-{{ social.name }} || mdi-link </v-icon>
+        <v-icon> mdi-{{ social.name }}</v-icon>
       </v-btn>
     </v-row>
   </div>
