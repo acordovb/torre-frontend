@@ -40,7 +40,7 @@
 
     <Skills
       icon="mdi-walk"
-      :array-skills="proficientObjs"
+      :array-skills="noviceObjs"
     >
       Novice
     </Skills>
