@@ -19,6 +19,23 @@
       :skills="job.skills"
       :visible-compen="job.compensation.visible"
     />
+
+    <v-card-actions class="d-flex justify-center">
+      <v-btn
+        v-if="previousURL != null"
+        outlined
+        rounded
+        width="130"
+        @click="getPreviousJobs"
+      >
+        <v-icon class="pl-2" dense>mdi-skip-previous</v-icon>
+        Previous
+      </v-btn>
+      <v-btn outlined rounded width="130" @click="getNextsJobs">
+        Next
+        <v-icon class="pl-2" dense>mdi-skip-next</v-icon>
+      </v-btn>
+    </v-card-actions>
   </v-main>
 </template>
 
@@ -38,6 +55,8 @@ export default {
     isLoading: true,
     fullPage: true,
     info: null,
+    nextURL: null,
+    previousURL: null,
   }),
   created() {
     this.$watch(
@@ -54,7 +73,50 @@ export default {
       axios
         .post(process.env.VUE_APP_API + "/opportunities/")
         .then(
-          (res) => ((this.isLoading = false), (this.info = res.data.results))
+          (res) => (
+            (this.isLoading = false),
+            (this.info = res.data.results),
+            (this.nextURL = res.data.pagination.next),
+            (this.previousURL = res.data.pagination.previous)
+          )
+        )
+        .catch((err) => {
+          console.log(err.response);
+        });
+    },
+    getNextsJobs() {
+      this.isLoading = true;
+      axios
+        .post(process.env.VUE_APP_API + "/opportunities/?next=" + this.nextURL)
+        .then(
+          (res) => (
+            (this.isLoading = false),
+            (this.info = res.data.results),
+            (this.nextURL = res.data.pagination.next),
+            (this.previousURL = res.data.pagination.previous),
+            this.scrollToTop()
+          )
+        )
+        .catch((err) => {
+          console.log(err.response);
+        });
+    },
+    getPreviousJobs() {
+      this.isLoading = true;
+      axios
+        .post(
+          process.env.VUE_APP_API +
+            "/opportunities/?previous=" +
+            this.previousURL
+        )
+        .then(
+          (res) => (
+            (this.isLoading = false),
+            (this.info = res.data.results),
+            (this.nextURL = res.data.pagination.next),
+            (this.previousURL = res.data.pagination.previous),
+            this.scrollToTop()
+          )
         )
         .catch((err) => {
           console.log(err.response);
@@ -62,6 +124,9 @@ export default {
     },
     onCancel() {
       console.log("User cancelled the loader.");
+    },
+    scrollToTop() {
+      window.scrollTo(0, 0);
     },
   },
 };
