@@ -28,17 +28,4 @@
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    icon: {
-      type: String,
-      default: "",
-    },
-    arraySkills: {
-      type: Array,
-      required: true,
-    },
-  },
-};
-</script>
+<script src="./Skills.ts" lang="ts"></script>

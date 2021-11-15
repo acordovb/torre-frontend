@@ -94,9 +94,9 @@
 
 <script>
 import axios from "axios";
-import Skills from "@/components/Skills";
-import Profile from "@/components/Profile";
-import socialBtns from "@/components/Social-Buttons";
+import Skills from "@/components/Skills-Comp/Skills";
+import Profile from "@/components/Profile-Comp/Profile";
+import socialBtns from "@/components/Social-Buttons-Comp/Social-Buttons";
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/vue-loading.css";
 

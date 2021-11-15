@@ -24,13 +24,4 @@
   </v-expansion-panels>
 </template>
 
-<script>
-export default {
-  props: {
-    arraySkills: {
-      type: Array,
-      required: true,
-    },
-  },
-};
-</script>
+<script src="./Panel-Skills.ts" lang="ts"></script>
