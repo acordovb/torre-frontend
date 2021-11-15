@@ -13,11 +13,11 @@
       :organization="job.organizations[0]"
       :objective="job.objective"
       :tagline="job.tagline || ''"
-      :typeJob="job.type"
+      :type-job="job.type"
       :compensation="job.compensation.data"
       :remote="job.remote"
       :skills="job.skills"
-      :visibleCompen="job.compensation.visible"
+      :visible-compen="job.compensation.visible"
     />
   </v-main>
 </template>
