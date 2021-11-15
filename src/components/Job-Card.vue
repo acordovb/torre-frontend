@@ -1,7 +1,14 @@
 <template>
-  <v-card class="mx-auto mb-3 pa-2" max-width="600" outlined>
+  <v-card
+    class="mx-auto mb-3 pa-2"
+    max-width="600"
+    outlined
+  >
     <v-list-item three-line>
-      <v-list-item-avatar tile size="80">
+      <v-list-item-avatar
+        tile
+        size="80"
+      >
         <v-img
           id="image"
           :src="organization.picture"
@@ -23,23 +30,44 @@
     </v-list-item>
     <v-card-text>
       <div>
-        <v-icon class="pl-2" dense> mdi-briefcase </v-icon>
+        <v-icon
+          class="pl-2"
+          dense
+        >
+          mdi-briefcase
+        </v-icon>
         {{ typeJob }}
       </div>
       <div v-if="visibleCompen">
-        <v-icon class="pl-2" dense> mdi-cash </v-icon>
+        <v-icon
+          class="pl-2"
+          dense
+        >
+          mdi-cash
+        </v-icon>
         <span>
           {{ compensation.currency }}{{ compensation.minAmount }} -
           {{ compensation.maxAmount }}/{{ compensation.periodicity }}
         </span>
       </div>
       <div v-if="remote">
-        <v-icon class="pl-2" dense> mdi-earth </v-icon> Remote
+        <v-icon
+          class="pl-2"
+          dense
+        >
+          mdi-earth
+        </v-icon> Remote
       </div>
     </v-card-text>
-    <panelSkills :arraySkills="skills" />
+    <panelSkills :array-skills="skills" />
     <v-card-actions class="d-flex justify-center">
-      <v-btn outlined rounded text> View </v-btn>
+      <v-btn
+        outlined
+        rounded
+        text
+      >
+        View
+      </v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -47,6 +75,9 @@
 <script>
 import panelSkills from "@/components/Panel-Skills";
 export default {
+  components: {
+    panelSkills,
+  },
   props: {
     organization: {
       type: Object,
@@ -80,9 +111,6 @@ export default {
       type: Boolean,
       required: true,
     },
-  },
-  components: {
-    panelSkills,
   },
 };
 </script>

@@ -15,40 +15,80 @@
       <socialBtns :socials="info.person.links" />
     </div>
 
-    <span>Skills and interests</span>
+    <v-card
+      class="mx-auto mb-3 pa-2"
+      max-width="800"
+      outlined
+    >
+      <span style="color: #cddc39">Skills and interests</span>
 
-    <Skills icon="mdi-bike-fast" :array-skills="mastersObjs">
-      Master/Influencer
-    </Skills>
-
-    <Skills icon="mdi-run-fast" :array-skills="expertObjs"> Expert </Skills>
-
-    <Skills icon="mdi-run" :array-skills="proficientObjs"> Proeficient </Skills>
-
-    <Skills icon="mdi-walk" :array-skills="noviceObjs"> Novice </Skills>
-
-    <Skills icon="mdi-puzzle-plus" :array-skills="noExperienceObjs">
-      No experience, but interested
-    </Skills>
-
-    <div v-if="info.opportunities[3].data.length > 0">
-      <hr class="mt-4" />
-
-      <Skills :array-skills="info.opportunities[3].data">
-        Industries and sectors of interest:
+      <Skills
+        icon="mdi-bike-fast"
+        :array-skills="mastersObjs"
+      >
+        Master/Influencer
       </Skills>
-    </div>
 
-    <hr class="mt-4" />
+      <Skills
+        icon="mdi-run-fast"
+        :array-skills="expertObjs"
+      >
+        Expert
+      </Skills>
 
-    <div class="pa-1">
-      <v-container> Languages: </v-container>
-      <v-chip-group active-class="primary--text" column>
-        <v-chip v-for="(item, i) in info.languages" :key="i">
-          {{ item.language }} - {{ item.fluency }}
-        </v-chip>
-      </v-chip-group>
-    </div>
+      <Skills
+        icon="mdi-run"
+        :array-skills="proficientObjs"
+      >
+        Proeficient
+      </Skills>
+
+      <Skills
+        icon="mdi-walk"
+        :array-skills="noviceObjs"
+      >
+        Novice
+      </Skills>
+
+      <Skills
+        icon="mdi-puzzle-plus"
+        :array-skills="noExperienceObjs"
+      >
+        No experience, but interested
+      </Skills>
+    </v-card>
+    <v-card
+      v-if="info.opportunities[3].data.length > 0"
+      class="mx-auto mb-3 pa-2"
+      max-width="800"
+      outlined
+    >
+      <div>
+        <Skills :array-skills="info.opportunities[3].data">
+          Industries and sectors of interest:
+        </Skills>
+      </div>
+    </v-card>
+    <v-card
+      class="mx-auto mb-3 pa-2"
+      max-width="800"
+      outlined
+    >
+      <div class="pa-1">
+        <v-container> Languages: </v-container>
+        <v-chip-group
+          active-class="primary--text"
+          column
+        >
+          <v-chip
+            v-for="(item, i) in info.languages"
+            :key="i"
+          >
+            {{ item.language }} - {{ item.fluency }}
+          </v-chip>
+        </v-chip-group>
+      </div>
+    </v-card>
   </v-main>
 </template>
 

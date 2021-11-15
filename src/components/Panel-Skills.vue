@@ -3,11 +3,19 @@
     <v-expansion-panel>
       <v-expansion-panel-header>
         Skills
-        <v-icon dense> mdi-weight-lifter </v-icon>
+        <v-icon dense>
+          mdi-weight-lifter
+        </v-icon>
       </v-expansion-panel-header>
       <v-expansion-panel-content>
-        <v-chip-group active-class="primary--text" column>
-          <v-chip v-for="(item, i) in arraySkills" :key="i">
+        <v-chip-group
+          active-class="primary--text"
+          column
+        >
+          <v-chip
+            v-for="(item, i) in arraySkills"
+            :key="i"
+          >
             {{ item.name }}
           </v-chip>
         </v-chip-group>
