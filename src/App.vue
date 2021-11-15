@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import searchBar from "@/components/Search-Bar";
+import searchBar from "@/components/Search-Bar-Comp/Search-Bar";
 
 export default {
   name: "App",

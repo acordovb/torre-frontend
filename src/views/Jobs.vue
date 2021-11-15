@@ -28,12 +28,27 @@
         width="130"
         @click="getPreviousJobs"
       >
-        <v-icon class="pl-2" dense>mdi-skip-previous</v-icon>
+        <v-icon
+          class="pl-2"
+          dense
+        >
+          mdi-skip-previous
+        </v-icon>
         Previous
       </v-btn>
-      <v-btn outlined rounded width="130" @click="getNextsJobs">
+      <v-btn
+        outlined
+        rounded
+        width="130"
+        @click="getNextsJobs"
+      >
         Next
-        <v-icon class="pl-2" dense>mdi-skip-next</v-icon>
+        <v-icon
+          class="pl-2"
+          dense
+        >
+          mdi-skip-next
+        </v-icon>
       </v-btn>
     </v-card-actions>
   </v-main>
@@ -41,7 +56,7 @@
 
 <script>
 import axios from "axios";
-import jobCard from "@/components/Job-Card";
+import jobCard from "@/components/Job-Card-Comp/Job-Card";
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/vue-loading.css";
 

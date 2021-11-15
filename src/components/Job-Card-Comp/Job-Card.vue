@@ -72,45 +72,4 @@
   </v-card>
 </template>
 
-<script>
-import panelSkills from "@/components/Panel-Skills";
-export default {
-  components: {
-    panelSkills,
-  },
-  props: {
-    organization: {
-      type: Object,
-      required: true,
-    },
-    tagline: {
-      type: String,
-      required: true,
-    },
-    objective: {
-      type: String,
-      required: true,
-    },
-    typeJob: {
-      type: String,
-      required: true,
-    },
-    compensation: {
-      type: Object,
-      required: true,
-    },
-    remote: {
-      type: Boolean,
-      required: true,
-    },
-    skills: {
-      type: Array,
-      required: true,
-    },
-    visibleCompen: {
-      type: Boolean,
-      required: true,
-    },
-  },
-};
-</script>
+<script src="./Job-Card.ts" lang="ts"></script>

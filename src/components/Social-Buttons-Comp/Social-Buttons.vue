@@ -14,13 +14,4 @@
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    socials: {
-      type: Array,
-      required: true,
-    },
-  },
-};
-</script>
+<script src="./Social-Buttons.ts" lang="ts"></script>

@@ -26,20 +26,4 @@
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    srcPicture: {
-      type: String,
-      required: true,
-    },
-    name: {
-      type: String,
-      required: true,
-    },
-    verified: {
-      type: Boolean,
-    },
-  },
-};
-</script>
+<script src="./Profile.ts" lang="ts"></script>
